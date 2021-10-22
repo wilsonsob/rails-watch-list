@@ -1,0 +1,4 @@
+<h1><%= @list.name %>
+
+<%= link_to 'delete this list', list_path(@list), method: :delete, class: 'btn btn-cancel', data: { confirm: 'Are you sure you want to delete this list?' } %>
+<p><%= link_to 'Back to list', lists_path %></p>
