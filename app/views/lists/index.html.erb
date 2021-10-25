@@ -30,14 +30,19 @@
     <p><%= link_to 'Add a new List', new_list_path %></p>
     <div class="row">
       <div class="card" style="width: 20rem;">
+
         <% @lists.each do |list| %>
           <div class="col-12 col-sm-6">
             <div class="card" style="width: 20rem;">
-          <%= link_to list.name, list_path(list) %>
-              <div class="card-body">
-              </div>
-        <% end %>
+              <% if list.photo.attached? %>
+                <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
+               <% else %>
+              You should add a picture to your list!
+              <% end %>
+              <%= link_to list.name, list_path(list) %>
+            </div>
           </div>
+        <% end %>
       </div>
     </div>
 

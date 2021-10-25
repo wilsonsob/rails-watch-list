@@ -21,7 +21,7 @@
   </div>
 </div>
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxwaG90[…]fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=859&q=80');">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>')">
   <div class="container text-center">
     <p>
       <%= @list.name %>
@@ -30,25 +30,19 @@
 </div>
 
 <div class="container">
-  <div class="d-flex justify-content-between" >
-    <div class="row">
-      <div class="card" style="width: 20rem;">
-          <% @list.movies.each do |movie| %>
-            <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-              <div class="col-12 col-sm-6">
-                <div class="card" style="width: 20rem;">
-                  <%= image_tag movie.poster_url, alt: movie.title%>
-                    <div class="card-body" >
-                      <h5 class="card-title"><%= movie.title %></h5>
-                      <h6><%= movie.rating %></h6>
-                      <p class="card-text" ><%= movie.overview  %></p>
-                      <p><%= bookmark.comment %></p>
-                      <p><%= link_to 'delete', bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger', class: "btn btn-gradient" %></p>
-                    </div>
-                </div>
-              </div>
-      </div>
-            <% end %>
-    </div>
-  <div>
+  <div class="cards" >
+    <% @list.movies.each do |movie| %>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+        <div class="card" >
+          <%= image_tag movie.poster_url, alt: movie.title%>
+          <div class="card-body" >
+            <h5 class="card-title"><%= movie.title %></h5>
+            <h6><%= movie.rating %></h6>
+            <p class="card-text" ><%= movie.overview  %></p>
+            <p><%= bookmark.comment %></p>
+            <p><%= link_to 'delete', bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger', class: "btn btn-gradient" %></p>
+          </div>
+        </div>
+    <% end %>
+  </div>
 </div>
