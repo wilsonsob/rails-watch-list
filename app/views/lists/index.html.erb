@@ -15,14 +15,18 @@
   </div>
 </div>
 
-<div class='img-container'>
-  <img class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))" src="../../assets/background.jpg">
-    <h1><span id="banner-typed-text">Save any kind of movie </span></h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxwaG90[…]fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=859&q=80');">
+  <div class="container text-center">
+  <h1>text test</h1>
+     <p>
+    <span id="banner-typed-text"></span>
+  </p>
+  </div>
 </div>
 
 
 <div class="container">
-  <div class="d-flex">
+
     <h2>My list</h2>
     <p><%= link_to 'Add a new List', new_list_path %></p>
     <div class="row">
@@ -30,12 +34,12 @@
         <% @lists.each do |list| %>
           <div class="col-12 col-sm-6">
             <div class="card" style="width: 20rem;">
-              <div class="card-body">
           <%= link_to list.name, list_path(list) %>
+              <div class="card-body">
               </div>
         <% end %>
           </div>
       </div>
     </div>
-  </div>
+
 </div>
