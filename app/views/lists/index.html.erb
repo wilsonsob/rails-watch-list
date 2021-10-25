@@ -1,6 +1,41 @@
-<%= link_to 'Create a new List', new_list_path, class: "btn btn-secondary" %>
-<br>
-<br>
-<% @lists.each do |list| %>
-  <h5><%= link_to list.name, list_path(list)%></h5>
-<% end %>
+
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" class="border-botton">
+  <h1><i class="fas fa-film"></i></h1>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to 'New List', new_list_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class='img-container'>
+  <img class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))" src="../../assets/background.jpg">
+    <h1><span id="banner-typed-text">Save any kind of movie </span></h1>
+</div>
+
+
+<div class="container">
+  <div class="d-flex">
+    <h2>My list</h2>
+    <p><%= link_to 'Add a new List', new_list_path %></p>
+    <div class="row">
+      <div class="card" style="width: 20rem;">
+        <% @lists.each do |list| %>
+          <div class="col-12 col-sm-6">
+            <div class="card" style="width: 20rem;">
+              <div class="card-body">
+          <%= link_to list.name, list_path(list) %>
+              </div>
+        <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
